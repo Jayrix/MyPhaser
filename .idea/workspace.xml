@@ -2,36 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff2fa460-8519-42d9-a513-9503ea8745ff" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/js/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/js/phaser.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/package-lock.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/webpack.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FloppyBird/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FloppyBird/js/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FloppyBird/js/phaser.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FloppyBird/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FloppyBird/webpack.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Template/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Template/js/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Template/js/phaser.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Template/package-lock.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Template/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Template/webpack.config.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/NewGameTutorial/part1.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/NewGameTutorial/part2.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/NewGameTutorial/part3.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/NewGameTutorial/part4.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/NewGameTutorial/part5.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/NewGameTutorial/part6.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/NewGameTutorial/part7.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/NewGameTutorial/part8.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/js/Enemy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/js/FightingEvents.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/js/Floor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/js/Player.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FightingGame/js/backup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewGameTutorial/index.html" afterPath="$PROJECT_DIR$/NewGameTutorial/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewGameTutorial/js/app.js" afterPath="$PROJECT_DIR$/NewGameTutorial/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewGameTutorial/js/out.js" afterPath="$PROJECT_DIR$/NewGameTutorial/js/out.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewGameTutorial/webpack.config.js" afterPath="$PROJECT_DIR$/NewGameTutorial/webpack.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/index.html" afterPath="$PROJECT_DIR$/FightingGame/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/js/app.js" afterPath="$PROJECT_DIR$/FightingGame/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/js/out.js" afterPath="$PROJECT_DIR$/FightingGame/js/out.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/webpack.config.js" afterPath="$PROJECT_DIR$/FightingGame/webpack.config.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -44,12 +25,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FightingGame/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="288">
+              <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -58,18 +39,40 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FightingGame/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="48" lean-forward="true" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+            <state relative-caret-position="413">
+              <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FightingEvents.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FightingGame/js/FightingEvents.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FloppyBird/js/app.js">
+      <file leaf-file-name="Player.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FightingGame/js/Player.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-486">
-              <caret line="6" column="51" lean-forward="true" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+            <state relative-caret-position="180">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Enemy.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FightingGame/js/Enemy.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -78,8 +81,18 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NewGameTutorial/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="212" column="35" lean-forward="false" selection-start-line="212" selection-start-column="8" selection-end-line="212" selection-end-column="35" />
+            <state relative-caret-position="-259">
+              <caret line="216" column="23" lean-forward="false" selection-start-line="216" selection-start-column="23" selection-end-line="216" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FloppyBird/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -94,6 +107,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>this.</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -107,12 +125,29 @@
         <option value="$PROJECT_DIR$/FloppyBird/index.html" />
         <option value="$PROJECT_DIR$/FloppyBird/js/app.js" />
         <option value="$PROJECT_DIR$/NewGameTutorial/js/app.js" />
+        <option value="$PROJECT_DIR$/FloppyBird/js/Sprite.js" />
+        <option value="$PROJECT_DIR$/FloppyBird/js/Enemy.js" />
+        <option value="$PROJECT_DIR$/FloppyBird/js/Player.js" />
+        <option value="$PROJECT_DIR$/FightingGame/webpack.config.js" />
+        <option value="$PROJECT_DIR$/FightingGame/js/backup.js" />
+        <option value="$PROJECT_DIR$/FightingGame/js/Floor.js" />
+        <option value="$PROJECT_DIR$/FightingGame/js/FightingEvents.js" />
+        <option value="$PROJECT_DIR$/FightingGame/index.html" />
+        <option value="$PROJECT_DIR$/FightingGame/js/Enemy.js" />
+        <option value="$PROJECT_DIR$/FightingGame/js/Player.js" />
         <option value="$PROJECT_DIR$/FightingGame/js/app.js" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -124,10 +159,10 @@
     <handled-path value="$PROJECT_DIR$/NewGameTutorial/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="65" />
-    <option name="y" value="-4" />
-    <option name="width" value="1855" />
-    <option name="height" value="1084" />
+    <option name="x" value="64" />
+    <option name="y" value="-11" />
+    <option name="width" value="1857" />
+    <option name="height" value="1092" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -144,7 +179,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -166,18 +201,13 @@
             <path>
               <item name="Phaser" type="b2602c69:ProjectViewProjectNode" />
               <item name="Phaser" type="462c0819:PsiDirectoryNode" />
-              <item name="FloppyBird" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Phaser" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phaser" type="462c0819:PsiDirectoryNode" />
-              <item name="FloppyBird" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="HelloPhaser" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Phaser" type="b2602c69:ProjectViewProjectNode" />
               <item name="Phaser" type="462c0819:PsiDirectoryNode" />
               <item name="HelloPhaser" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Phaser" type="b2602c69:ProjectViewProjectNode" />
@@ -205,7 +235,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -216,17 +246,21 @@
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.selected.package.jscs" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="JavaScriptPreferStrict" value="false" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/FightingGame" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Template" />
       <recent name="$PROJECT_DIR$/FloppyBird/assets" />
       <recent name="$PROJECT_DIR$/FloppyBird" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/FightingGame/js" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -253,23 +287,25 @@
       <updated>1510698432902</updated>
       <workItem from="1510698435294" duration="2599000" />
       <workItem from="1510727637838" duration="1893000" />
-      <workItem from="1510732672694" duration="20545000" />
+      <workItem from="1510732672694" duration="20579000" />
+      <workItem from="1510758835636" duration="5958000" />
+      <workItem from="1510819802104" duration="25343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25037000" />
+    <option name="totallyTimeSpent" value="56372000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19213974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29319373" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29319373" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -292,11 +328,94 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/FightingGame/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/Enemy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="59" lean-forward="false" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/Player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/Sprite.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewGameTutorial/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="846">
+          <caret line="47" column="41" lean-forward="false" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FloppyBird/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="51" lean-forward="true" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewGameTutorial/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3816">
+          <caret line="212" column="35" lean-forward="false" selection-start-line="212" selection-start-column="8" selection-end-line="212" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="48" lean-forward="true" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/NewGameTutorial/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -329,27 +448,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewGameTutorial/part2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewGameTutorial/part4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewGameTutorial/part1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/NewGameTutorial/part2.html" />
+    <entry file="file://$PROJECT_DIR$/NewGameTutorial/part4.html" />
+    <entry file="file://$PROJECT_DIR$/NewGameTutorial/part1.html" />
     <entry file="file://$PROJECT_DIR$/HelloPhaser/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -382,7 +483,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="91" column="30" lean-forward="false" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -390,7 +490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -398,7 +497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -406,7 +504,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -422,7 +519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="11" lean-forward="true" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -430,7 +526,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -439,23 +534,32 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FightingGame/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FightingGame/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/Sprite.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FightingGame/index.html">
+    <entry file="file://$PROJECT_DIR$/FloppyBird/js/out.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HelloPhaser/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -463,27 +567,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FloppyBird/js/app.js">
+    <entry file="file://$PROJECT_DIR$/FightingGame/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486">
-          <caret line="6" column="51" lean-forward="true" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+        <state relative-caret-position="126">
+          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/backup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1889">
+          <caret line="135" column="0" lean-forward="true" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/Floor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NewGameTutorial/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="212" column="35" lean-forward="false" selection-start-line="212" selection-start-column="8" selection-end-line="212" selection-end-column="35" />
+        <state relative-caret-position="-259">
+          <caret line="216" column="23" lean-forward="false" selection-start-line="216" selection-start-column="23" selection-end-line="216" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FloppyBird/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/Enemy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/Player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/FightingEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="49" lean-forward="true" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FightingGame/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="48" lean-forward="true" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
-          <folding />
+        <state relative-caret-position="413">
+          <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -5,7 +5,7 @@ module.exports = {
     devServer: {
         inline: true,
         contentBase: './',
-        port: 3002
+        port: 3003
     },
     watch: true,
 
