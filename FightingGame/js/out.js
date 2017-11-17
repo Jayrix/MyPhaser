@@ -130,7 +130,7 @@ window.addEventListener('load', function () {
             };
 
             //Obiekt zawierajacy metody zwiazane z logiką gry
-            this.FightingEventsLibrary = new _FightingEvents2.default(this.player, this.enemy, this.inputControls);
+            this.FightingEventsLibrary = new _FightingEvents2.default(this.player, this.enemy, this.inputControls, game);
 
             this.keyboardIsBeingPressed = false;
             game.input.keyboard.onDownCallback = function () {
@@ -140,16 +140,18 @@ window.addEventListener('load', function () {
             //restart stanu playera po puszczeniu klawiszy
             game.input.keyboard.onUpCallback = function () {
                 _this.keyboardIsBeingPressed = false;
-                _this.player.animations.stop(_this.player.lastAnimation);
-                _this.player.frame = 0;
+                if (_this.player.body.touching.down) {
+                    _this.player.frame = 0;
+                    _this.player.animations.stop(_this.player.lastAnimation);
+                    _this.player.animations.play('idle');
+                    _this.player.lastAnimation = 'idle';
+                }
                 _this.player.body.velocity.x = 0;
-                _this.player.animations.play('idle');
+
+                _this.player.hitbox1.kill();
                 console.log('obcizam sys');
 
-                console.log(_this.player.body.width);
-                console.log(_this.player.body.height);
-                console.log(_this.enemy.body.width);
-                console.log(_this.enemy.body.height);
+                console.log(_this.enemy.body.x);
             };
 
             //inicjalizacja animacji idle
@@ -160,13 +162,19 @@ window.addEventListener('load', function () {
         },
 
         update: function update() {
+            var _this2 = this;
 
             // This function is called 60 times per second
             // It contains the game's logic
 
-            game.physics.arcade.collide(this.player, this.invisibleFloor);
+            game.physics.arcade.collide(this.player, this.invisibleFloor, function () {
+                return _this2.FightingEventsLibrary.idleAfterLanding(_this2.player);
+            }, null, this);
             game.physics.arcade.collide(this.enemy, this.invisibleFloor);
-            game.physics.arcade.collide(this.player, this.enemy);
+            game.physics.arcade.collide(this.player, this.enemy, this.FightingEventsLibrary.runAgainst, null, this);
+            game.physics.arcade.collide(this.player.hitbox1, this.enemy, function () {
+                return _this2.FightingEventsLibrary.damage(_this2.enemy, _this2.FightingEventsLibrary.knockback);
+            }, null, this);
 
             //this.enemy.animations.play('left');
 
@@ -181,6 +189,7 @@ window.addEventListener('load', function () {
             game.debug.spriteInfo(this.enemy, 500, 32);
             game.debug.body(this.player);
             game.debug.body(this.enemy);
+            game.debug.body(this.player.hitbox1);
         }
 
     };
@@ -218,12 +227,13 @@ var Enemy = function () {
             var enemy = game.add.sprite(game.world.width - 300, game.world.height - 200, 'enemy');
             game.physics.arcade.enable(enemy);
 
-            enemy.scale.set(0.6);
+            enemy.scale.set(0.7);
             // enemy.scale.x *= -1;
-            enemy.anchor.set(0.5, 0.5);
+            enemy.anchor.set(0.5, 0);
 
             enemy.body.gravity.y = 2300;
             enemy.body.collideWorldBounds = true;
+            enemy.body.setSize(100, 212, 67);
 
             enemy.animations.add('right', [19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3], 50, true);
             enemy.animations.add('left', [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], 50, true);
@@ -233,6 +243,7 @@ var Enemy = function () {
 
             //states
             enemy.health = 100;
+            enemy.isImmortal = false;
 
             return enemy;
         }
@@ -266,15 +277,22 @@ var Player = function () {
             game.physics.arcade.enable(player);
 
             player.scale.set(2.5);
-            player.anchor.set(0.5, 0.5);
+            player.anchor.set(0.5, 0);
 
             player.body.gravity.y = 600;
             player.body.collideWorldBounds = true;
+            player.body.setSize(27, 50, 7);
 
             player.animations.add('run', [24, 25, 26, 27, 28, 29, 30, 31], 10, true);
             player.animations.add('attack', [3, 5], 6, true);
             player.animations.add('idle', [2, 5], 2, true);
             //player.animations.add('block', [2,5],6, true);
+
+            player.hitbox1 = game.add.sprite(0, 0, null);
+            game.physics.arcade.enable(player.hitbox1);
+            player.hitbox1.body.setSize(15, 50, 27, player.height / 4);
+            player.addChild(player.hitbox1);
+            player.hitbox1.kill();
 
             //states
             player.health = 100;
@@ -333,12 +351,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var FightingEvents = function () {
-    function FightingEvents(player, enemy, inputControls) {
+    function FightingEvents(player, enemy, inputControls, game) {
         _classCallCheck(this, FightingEvents);
 
         this.player = player;
         this.enemy = enemy;
         this.inputControls = inputControls;
+        this.game = game;
     }
 
     _createClass(FightingEvents, [{
@@ -348,17 +367,38 @@ var FightingEvents = function () {
             switch (true) {
 
                 case inputControls.aKey.isDown:
-                    if (player.scale.x > 0) player.scale.x *= -1;
+                    if (player.body.touching.down) {
+                        player.animations.play('run');
+                        player.lastAnimation = 'run';
+
+                        if (inputControls.wKey.isDown) this.jump(player, -600);
+                    } else {
+                        player.frame = 6;
+                        player.preLastAnimation = 'jump';
+                    }
+                    if (player.scale.x > 0) {
+                        player.scale.x *= -1;
+                        player.hitbox1.body.setSize(15, 50, -42, player.height / 4);
+                    }
                     player.body.velocity.x = -250;
-                    player.animations.play('run');
-                    player.lastAnimation = 'run';
+
                     break;
 
                 case inputControls.dKey.isDown:
-                    if (player.scale.x < 0) player.scale.x *= -1;
+                    if (player.body.touching.down) {
+                        player.animations.play('run');
+                        player.lastAnimation = 'run';
+
+                        if (inputControls.wKey.isDown) this.jump(player, -600);
+                    } else {
+                        player.frame = 6;
+                        player.preLastAnimation = 'jump';
+                    }
+                    if (player.scale.x < 0) {
+                        player.scale.x *= -1;
+                        player.hitbox1.body.setSize(15, 50, 27, player.height / 4);
+                    }
                     player.body.velocity.x = 250;
-                    player.animations.play('run');
-                    player.lastAnimation = 'run';
                     break;
 
                 case inputControls.sKey.isDown:
@@ -370,10 +410,11 @@ var FightingEvents = function () {
                 case inputControls.spaceKey.isDown:
                     player.animations.play('attack');
                     player.lastAnimation = 'attack';
+                    this.attack(player);
                     break;
 
                 case inputControls.wKey.isDown:
-                    this.jump(player, -400);
+                    this.jump(player, -600);
                     break;
 
             }
@@ -388,6 +429,54 @@ var FightingEvents = function () {
             } else {
                 actor.frame = 4;
                 actor.animations.stop(actor.lastAnimation);
+            }
+            actor.lastAnimation = 'jump';
+        }
+    }, {
+        key: 'attack',
+        value: function attack(actor) {
+            if (actor.hitbox1.alive === false) {
+                actor.hitbox1.revive();
+            }
+            //hitbox kill is being performed in keyboard.onUpCallback
+        }
+    }, {
+        key: 'damage',
+        value: function damage(victim, knockbackFn) {
+            if (victim.isImmortal === false) {
+                victim.health -= 10;
+                if (victim.health < 1) {
+                    victim.kill();
+                } else {
+                    victim.isImmortal = true;
+                    knockbackFn(this.player, this.enemy);
+                }
+            }
+            console.log(victim.health);
+        }
+    }, {
+        key: 'knockback',
+        value: function knockback(attacker, victim) {
+            var timeout = setTimeout(function () {
+                victim.isImmortal = false;
+                victim.body.velocity.x = 0;
+            }, 100);
+            var startingX = victim.body.x;
+            attacker.body.x < victim.body.x ? victim.body.velocity.x = 300 : victim.body.velocity.x = -300;
+            victim.frame = 19;
+        }
+    }, {
+        key: 'runAgainst',
+        value: function runAgainst() {
+
+            this.enemy.body.velocity.x = 0;
+        }
+    }, {
+        key: 'idleAfterLanding',
+        value: function idleAfterLanding(actor) {
+            if (actor.lastAnimation === 'jump') {
+                actor.animations.play('idle');
+                actor.lastAnimation = 'idle';
             }
         }
     }]);

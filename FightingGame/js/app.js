@@ -28,7 +28,6 @@ var mainState = {
         this.enemy.scale.x *= -1; //konieczne wyciagniecie na po inicjalizacji zeby uniknac ujemnego body.width
 
 
-
         //stworzenie obiektu z klawiszami
         this.inputControls = {
             wKey: game.input.keyboard.addKey(Phaser.Keyboard.W),
@@ -39,7 +38,7 @@ var mainState = {
         };
 
         //Obiekt zawierajacy metody zwiazane z logiką gry
-        this.FightingEventsLibrary = new FightingEvents(this.player, this.enemy, this.inputControls);
+        this.FightingEventsLibrary = new FightingEvents(this.player, this.enemy, this.inputControls,game);
 
 
 
@@ -51,16 +50,22 @@ var mainState = {
         //restart stanu playera po puszczeniu klawiszy
         game.input.keyboard.onUpCallback =  () => {
             this.keyboardIsBeingPressed = false;
-            this.player.animations.stop(this.player.lastAnimation);
-            this.player.frame = 0;
-            this.player.body.velocity.x = 0;
-            this.player.animations.play('idle');
+            if (this.player.body.touching.down){
+                this.player.frame = 0;
+                this.player.animations.stop(this.player.lastAnimation);
+                this.player.animations.play('idle');
+                this.player.lastAnimation = 'idle';
+            }
+                this.player.body.velocity.x = 0;
+
+
+
+            this.player.hitbox1.kill();
             console.log('obcizam sys');
 
-            console.log(this.player.body.width);
-            console.log(this.player.body.height);
-            console.log(this.enemy.body.width);
-            console.log(this.enemy.body.height);
+            console.log(this.enemy.body.x);
+
+
 
         };
 
@@ -78,9 +83,10 @@ var mainState = {
         // This function is called 60 times per second
         // It contains the game's logic
 
-        game.physics.arcade.collide(this.player, this.invisibleFloor);
+        game.physics.arcade.collide(this.player, this.invisibleFloor, () => this.FightingEventsLibrary.idleAfterLanding(this.player), null, this );
         game.physics.arcade.collide(this.enemy, this.invisibleFloor);
-        game.physics.arcade.collide(this.player, this.enemy);
+        game.physics.arcade.collide(this.player, this.enemy, this.FightingEventsLibrary.runAgainst, null, this);
+        game.physics.arcade.collide(this.player.hitbox1, this.enemy,()=> this.FightingEventsLibrary.damage(this.enemy,this.FightingEventsLibrary.knockback), null, this);
 
         //this.enemy.animations.play('left');
 
@@ -95,7 +101,7 @@ var mainState = {
         game.debug.spriteInfo(this.enemy, 500,32);
         game.debug.body(this.player);
         game.debug.body(this.enemy);
-
+        game.debug.body(this.player.hitbox1);
 
     },
 
