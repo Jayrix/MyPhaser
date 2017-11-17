@@ -1,4 +1,4 @@
-
+import HealthBar from './HealthBar.js';
 
 class Player  {
 
@@ -9,7 +9,7 @@ class Player  {
         player.scale.set(2.5);
         player.anchor.set(0.5,0);
 
-        player.body.gravity.y = 600;
+        player.body.gravity.y = 1000;
         player.body.collideWorldBounds = true;
         player.body.setSize(27,50,7);
 
@@ -26,6 +26,13 @@ class Player  {
 
         //states
         player.health = 100;
+        player.healthBar = new HealthBar(game, {x : 250, y: 130, width: 400,
+            bg: {color: '#b81222'},
+            bar: {color: '#00b832'},
+
+        });
+
+        player.isImmortal = false;
 
 
         return player;

@@ -3,6 +3,7 @@ import Player from './Player.js';
 import Floor from './Floor.js';
 import FightingEvents from './FightingEvents.js';
 
+
 window.addEventListener('load', function(){
 
 
@@ -58,14 +59,10 @@ var mainState = {
             }
                 this.player.body.velocity.x = 0;
 
-
-
             this.player.hitbox1.kill();
             console.log('obcizam sys');
 
             console.log(this.enemy.body.x);
-
-
 
         };
 
@@ -74,6 +71,9 @@ var mainState = {
         this.enemy.lastAnimation = 'idle';
         this.player.animations.play('idle');
         this.player.lastAnimation = 'idle';
+
+        // var barConfig = {x: 200, y: 100};
+        // this.myHealthBar = new HealthBar(this.game, barConfig);
 
 
     },

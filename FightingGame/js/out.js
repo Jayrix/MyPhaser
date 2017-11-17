@@ -159,6 +159,10 @@ window.addEventListener('load', function () {
             this.enemy.lastAnimation = 'idle';
             this.player.animations.play('idle');
             this.player.lastAnimation = 'idle';
+
+            // var barConfig = {x: 200, y: 100};
+            // this.myHealthBar = new HealthBar(this.game, barConfig);
+
         },
 
         update: function update() {
@@ -213,6 +217,12 @@ window.addEventListener('load', function () {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _HealthBar = __webpack_require__(6);
+
+var _HealthBar2 = _interopRequireDefault(_HealthBar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Enemy = function () {
@@ -231,7 +241,7 @@ var Enemy = function () {
             // enemy.scale.x *= -1;
             enemy.anchor.set(0.5, 0);
 
-            enemy.body.gravity.y = 2300;
+            enemy.body.gravity.y = 1000;
             enemy.body.collideWorldBounds = true;
             enemy.body.setSize(100, 212, 67);
 
@@ -243,6 +253,11 @@ var Enemy = function () {
 
             //states
             enemy.health = 100;
+            enemy.healthBar = new _HealthBar2.default(game, { x: game.world.width - 250, y: 130, width: 400,
+                bg: { color: '#b81222' },
+                bar: { color: '#00b832' },
+                flipped: true
+            });
             enemy.isImmortal = false;
 
             return enemy;
@@ -263,6 +278,12 @@ module.exports = Enemy;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _HealthBar = __webpack_require__(6);
+
+var _HealthBar2 = _interopRequireDefault(_HealthBar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Player = function () {
@@ -279,7 +300,7 @@ var Player = function () {
             player.scale.set(2.5);
             player.anchor.set(0.5, 0);
 
-            player.body.gravity.y = 600;
+            player.body.gravity.y = 1000;
             player.body.collideWorldBounds = true;
             player.body.setSize(27, 50, 7);
 
@@ -296,6 +317,13 @@ var Player = function () {
 
             //states
             player.health = 100;
+            player.healthBar = new _HealthBar2.default(game, { x: 250, y: 130, width: 400,
+                bg: { color: '#b81222' },
+                bar: { color: '#00b832' }
+
+            });
+
+            player.isImmortal = false;
 
             return player;
         }
@@ -371,7 +399,7 @@ var FightingEvents = function () {
                         player.animations.play('run');
                         player.lastAnimation = 'run';
 
-                        if (inputControls.wKey.isDown) this.jump(player, -600);
+                        if (inputControls.wKey.isDown) this.jump(player, -700);
                     } else {
                         player.frame = 6;
                         player.preLastAnimation = 'jump';
@@ -389,7 +417,7 @@ var FightingEvents = function () {
                         player.animations.play('run');
                         player.lastAnimation = 'run';
 
-                        if (inputControls.wKey.isDown) this.jump(player, -600);
+                        if (inputControls.wKey.isDown) this.jump(player, -700);
                     } else {
                         player.frame = 6;
                         player.preLastAnimation = 'jump';
@@ -414,7 +442,7 @@ var FightingEvents = function () {
                     break;
 
                 case inputControls.wKey.isDown:
-                    this.jump(player, -600);
+                    this.jump(player, -700);
                     break;
 
             }
@@ -445,6 +473,7 @@ var FightingEvents = function () {
         value: function damage(victim, knockbackFn) {
             if (victim.isImmortal === false) {
                 victim.health -= 10;
+                victim.healthBar.setPercent(victim.health);
                 if (victim.health < 1) {
                     victim.kill();
                 } else {
@@ -487,6 +516,187 @@ var FightingEvents = function () {
 ;
 
 module.exports = FightingEvents;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ Copyright (c) 2015 Belahcen Marwane (b.marwane@gmail.com)
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ */
+
+var HealthBar = function HealthBar(game, providedConfig) {
+    this.game = game;
+
+    this.setupConfiguration(providedConfig);
+    this.setPosition(this.config.x, this.config.y);
+    this.drawBackground();
+    this.drawHealthBar();
+    this.setFixedToCamera(this.config.isFixedToCamera);
+};
+HealthBar.prototype.constructor = HealthBar;
+
+HealthBar.prototype.setupConfiguration = function (providedConfig) {
+    this.config = this.mergeWithDefaultConfiguration(providedConfig);
+    this.flipped = this.config.flipped;
+};
+
+HealthBar.prototype.mergeWithDefaultConfiguration = function (newConfig) {
+    var defaultConfig = {
+        width: 250,
+        height: 40,
+        x: 0,
+        y: 0,
+        bg: {
+            color: '#651828'
+        },
+        bar: {
+            color: '#FEFF03'
+        },
+        animationDuration: 200,
+        flipped: false,
+        isFixedToCamera: false
+    };
+
+    return mergeObjetcs(defaultConfig, newConfig);
+};
+
+function mergeObjetcs(targetObj, newObj) {
+    for (var p in newObj) {
+        try {
+            targetObj[p] = newObj[p].constructor == Object ? mergeObjetcs(targetObj[p], newObj[p]) : newObj[p];
+        } catch (e) {
+            targetObj[p] = newObj[p];
+        }
+    }
+    return targetObj;
+}
+
+HealthBar.prototype.drawBackground = function () {
+
+    var bmd = this.game.add.bitmapData(this.config.width, this.config.height);
+    bmd.ctx.fillStyle = this.config.bg.color;
+    bmd.ctx.beginPath();
+    bmd.ctx.rect(0, 0, this.config.width, this.config.height);
+    bmd.ctx.fill();
+    bmd.update();
+
+    this.bgSprite = this.game.add.sprite(this.x, this.y, bmd);
+    this.bgSprite.anchor.set(0.5);
+
+    if (this.flipped) {
+        this.bgSprite.scale.x = -1;
+    }
+};
+
+HealthBar.prototype.drawHealthBar = function () {
+    var bmd = this.game.add.bitmapData(this.config.width, this.config.height);
+    bmd.ctx.fillStyle = this.config.bar.color;
+    bmd.ctx.beginPath();
+    bmd.ctx.rect(0, 0, this.config.width, this.config.height);
+    bmd.ctx.fill();
+    bmd.update();
+
+    this.barSprite = this.game.add.sprite(this.x - this.bgSprite.width / 2, this.y, bmd);
+    this.barSprite.anchor.y = 0.5;
+
+    if (this.flipped) {
+        this.barSprite.scale.x = -1;
+    }
+};
+
+HealthBar.prototype.setPosition = function (x, y) {
+    this.x = x;
+    this.y = y;
+
+    if (this.bgSprite !== undefined && this.barSprite !== undefined) {
+        this.bgSprite.position.x = x;
+        this.bgSprite.position.y = y;
+
+        this.barSprite.position.x = x - this.config.width / 2;
+        this.barSprite.position.y = y;
+    }
+};
+
+HealthBar.prototype.setPercent = function (newValue) {
+    if (newValue < 0) newValue = 0;
+    if (newValue > 100) newValue = 100;
+
+    var newWidth = newValue * this.config.width / 100;
+
+    this.setWidth(newWidth);
+};
+
+/*
+ Hex format, example #ad3aa3
+ */
+HealthBar.prototype.setBarColor = function (newColor) {
+    var bmd = this.barSprite.key;
+    bmd.update();
+
+    var currentRGBColor = bmd.getPixelRGB(0, 0);
+    var newRGBColor = hexToRgb(newColor);
+    bmd.replaceRGB(currentRGBColor.r, currentRGBColor.g, currentRGBColor.b, 255, newRGBColor.r, newRGBColor.g, newRGBColor.b, 255);
+};
+
+HealthBar.prototype.setWidth = function (newWidth) {
+    if (this.flipped) {
+        newWidth = -1 * newWidth;
+    }
+    this.game.add.tween(this.barSprite).to({ width: newWidth }, this.config.animationDuration, Phaser.Easing.Linear.None, true);
+};
+
+HealthBar.prototype.setFixedToCamera = function (fixedToCamera) {
+    this.bgSprite.fixedToCamera = fixedToCamera;
+    this.barSprite.fixedToCamera = fixedToCamera;
+};
+
+HealthBar.prototype.kill = function () {
+    this.bgSprite.kill();
+    this.barSprite.kill();
+};
+
+module.exports = HealthBar;
+
+/**
+ Utils
+ */
+
+function hexToRgb(hex) {
+    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+        return r + r + g + g + b + b;
+    });
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
 
 /***/ })
 /******/ ]);

@@ -15,7 +15,7 @@ class FightingEvents {
                     player.animations.play('run');
                     player.lastAnimation = 'run';
 
-                    if(inputControls.wKey.isDown) this.jump(player,-600);
+                    if(inputControls.wKey.isDown) this.jump(player,-700);
                 } else{
                     player.frame = 6;
                     player.preLastAnimation = 'jump';
@@ -33,7 +33,7 @@ class FightingEvents {
                     player.animations.play('run');
                     player.lastAnimation = 'run';
 
-                    if(inputControls.wKey.isDown) this.jump(player,-600);
+                    if(inputControls.wKey.isDown) this.jump(player,-700);
                 } else {
                     player.frame = 6;
                     player.preLastAnimation = 'jump';
@@ -58,7 +58,7 @@ class FightingEvents {
                 break;
 
             case inputControls.wKey.isDown:
-                this.jump(player,-600);
+                this.jump(player,-700);
                 break;
 
         }
@@ -86,6 +86,7 @@ class FightingEvents {
     damage(victim,knockbackFn){
         if (victim.isImmortal === false){
             victim.health -= 10;
+            victim.healthBar.setPercent(victim.health);
             if (victim.health < 1) {
                 victim.kill();
             } else {

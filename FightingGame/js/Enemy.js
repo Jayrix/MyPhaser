@@ -1,4 +1,4 @@
-
+import HealthBar from './HealthBar.js';
 
 class Enemy {
 
@@ -11,7 +11,7 @@ class Enemy {
         // enemy.scale.x *= -1;
         enemy.anchor.set(0.5,0);
 
-        enemy.body.gravity.y = 2300;
+        enemy.body.gravity.y = 1000;
         enemy.body.collideWorldBounds = true;
         enemy.body.setSize(100,212,67);
 
@@ -24,9 +24,12 @@ class Enemy {
 
         //states
         enemy.health = 100;
+        enemy.healthBar = new HealthBar(game, {x : game.world.width - 250, y: 130, width: 400,
+            bg: {color: '#b81222'},
+            bar: {color: '#00b832'},
+            flipped : true,
+        });
         enemy.isImmortal = false;
-
-
 
         return enemy;
     }
