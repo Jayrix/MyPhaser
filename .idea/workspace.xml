@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff2fa460-8519-42d9-a513-9503ea8745ff" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/js/Enemy.js" afterPath="$PROJECT_DIR$/FightingGame/js/Enemy.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/js/FightingEvents.js" afterPath="$PROJECT_DIR$/FightingGame/js/FightingEvents.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/js/Player.js" afterPath="$PROJECT_DIR$/FightingGame/js/Player.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/js/app.js" afterPath="$PROJECT_DIR$/FightingGame/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/js/out.js" afterPath="$PROJECT_DIR$/FightingGame/js/out.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -36,8 +34,8 @@
           <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/FightingGame/js/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1638">
-                  <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+                <state relative-caret-position="252">
+                  <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -60,8 +58,8 @@
           <file leaf-file-name="FightingEvents.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/FightingGame/js/FightingEvents.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1260">
-                  <caret line="70" column="18" lean-forward="true" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+                <state relative-caret-position="486">
+                  <caret line="138" column="47" lean-forward="false" selection-start-line="138" selection-start-column="47" selection-end-line="138" selection-end-column="47" />
                   <folding />
                 </state>
               </provider>
@@ -70,8 +68,8 @@
           <file leaf-file-name="Player.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/FightingGame/js/Player.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="36">
-                  <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+                <state relative-caret-position="504">
+                  <caret line="40" column="15" lean-forward="false" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="15" />
                   <folding />
                 </state>
               </provider>
@@ -80,8 +78,8 @@
           <file leaf-file-name="Enemy.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/FightingGame/js/Enemy.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+                <state relative-caret-position="594">
+                  <caret line="45" column="31" lean-forward="false" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
                   <folding />
                 </state>
               </provider>
@@ -134,9 +132,9 @@
         <option value="$PROJECT_DIR$/FightingGame/index.html" />
         <option value="$PROJECT_DIR$/NewGameTutorial/js/app.js" />
         <option value="$PROJECT_DIR$/FightingGame/js/app.js" />
+        <option value="$PROJECT_DIR$/FightingGame/js/FightingEvents.js" />
         <option value="$PROJECT_DIR$/FightingGame/js/Player.js" />
         <option value="$PROJECT_DIR$/FightingGame/js/Enemy.js" />
-        <option value="$PROJECT_DIR$/FightingGame/js/FightingEvents.js" />
       </list>
     </option>
   </component>
@@ -294,12 +292,12 @@
       <workItem from="1510855167838" duration="28000" />
       <workItem from="1510857542912" duration="22180000" />
       <workItem from="1510908058683" duration="2801000" />
-      <workItem from="1510915094828" duration="9008000" />
+      <workItem from="1510915094828" duration="10364000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90461000" />
+    <option name="totallyTimeSpent" value="91817000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -635,14 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FloppyBird/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NewGameTutorial/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1260">
@@ -651,34 +641,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FightingGame/js/app.js">
+    <entry file="file://$PROJECT_DIR$/FloppyBird/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1638">
-          <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        <state relative-caret-position="522">
+          <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FightingGame/js/FightingEvents.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="70" column="18" lean-forward="true" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+        <state relative-caret-position="486">
+          <caret line="138" column="47" lean-forward="false" selection-start-line="138" selection-start-column="47" selection-end-line="138" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FightingGame/js/Player.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="504">
+          <caret line="40" column="15" lean-forward="false" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FightingGame/js/Enemy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+        <state relative-caret-position="594">
+          <caret line="45" column="31" lean-forward="false" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FightingGame/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding />
         </state>
       </provider>

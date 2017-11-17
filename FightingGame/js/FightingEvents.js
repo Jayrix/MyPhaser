@@ -130,12 +130,14 @@ class FightingEvents {
         //hitbox kill is being performed in keyboard.onUpCallback
     }
 
-    damage(attacker,victim,knockbackFn){
+    damage(attacker,victim,knockbackFn) {
         if (victim.isImmortal === false){
             victim.health -= 10;
             victim.healthBar.setPercent(victim.health);
             attacker.punchSound.play();
             if (victim.health < 1) {
+                this.game.physics.arcade.enable(victim.hitbox1);
+                //victim.hitbox1.kill();
                 victim.kill();
             } else {
                 victim.isImmortal = true;

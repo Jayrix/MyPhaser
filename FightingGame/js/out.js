@@ -469,7 +469,7 @@ var Enemy = function () {
             //states
             enemy.health = 100;
             enemy.healthBar = new _HealthBar2.default(game, { x: game.world.width - 250, y: 130, width: 400,
-                bg: { color: '#b81222' },
+                bg: { color: '#75000e' },
                 bar: { color: '#00b832' },
                 flipped: true
             });
@@ -543,7 +543,7 @@ var Player = function () {
             //states
             player.health = 100;
             player.healthBar = new _HealthBar2.default(game, { x: 250, y: 130, width: 400,
-                bg: { color: '#b81222' },
+                bg: { color: '#75000e' },
                 bar: { color: '#00b832' }
 
             });
@@ -747,6 +747,8 @@ var FightingEvents = function () {
                 victim.healthBar.setPercent(victim.health);
                 attacker.punchSound.play();
                 if (victim.health < 1) {
+                    this.game.physics.arcade.enable(victim.hitbox1);
+                    //victim.hitbox1.kill();
                     victim.kill();
                 } else {
                     victim.isImmortal = true;
