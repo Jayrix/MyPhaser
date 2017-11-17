@@ -32,13 +32,13 @@ class Player  {
 
         //states
         player.health = 100;
-        player.healthBar = new HealthBar(game, {x : 250, y: 130, width: 400,
+        player.healthBar = new HealthBar(game, {x : 250, y: 100, width: 400, height: 50 ,
             bg: {color: '#75000e'},
             bar: {color: '#00b832'},
 
         });
         player.isImmortal = false;
-        player.blocking = false;
+        player.isBlocking = false;
 
 
         return player;

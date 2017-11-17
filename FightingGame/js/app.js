@@ -69,6 +69,10 @@ var mainState = {
             }
             this.player.body.velocity.x = 0;
             this.player.hitbox1.kill();
+            if(this.player.isBlocking){
+                this.player.isImmortal = false;
+                this.player.isBlocking = false;
+            }
 
             //do debugowania - bedzie wymagalo przerboienia przy dwoch graczach
             if (this.enemy.body.touching.down){
@@ -79,6 +83,10 @@ var mainState = {
             }
             this.enemy.body.velocity.x = 0;
             this.enemy.hitbox1.kill();
+            if(this.enemy.isBlocking){
+                this.enemy.isImmortal = false;
+                this.enemy.isBlocking = false;
+            }
 
             console.log(this.enemy.body.x);
 
@@ -114,19 +122,19 @@ var mainState = {
     render: function() {
 
         // Sprite debug info
-        game.debug.spriteInfo(this.player,32,32);
-        game.debug.spriteInfo(this.enemy, 500,32);
-        game.debug.body(this.player);
-        game.debug.body(this.enemy);
-        game.debug.body(this.player.hitbox1);
-        game.debug.body(this.enemy.hitbox1);
+        // game.debug.spriteInfo(this.player,32,32);
+        // game.debug.spriteInfo(this.enemy, 500,32);
+        // game.debug.body(this.player);
+        // game.debug.body(this.enemy);
+        // game.debug.body(this.player.hitbox1);
+        // game.debug.body(this.enemy.hitbox1);
 
     },
 
 };
 
 // Initialize Phaser, and create a 400px by 490px game
-    var game = new Phaser.Game(1100, 524, Phaser.CANVAS);
+    var game = new Phaser.Game(1500, 524, Phaser.CANVAS);
 
 // Add the 'mainState' and call it 'main'
     game.state.add('main', mainState);

@@ -47,6 +47,10 @@ class FightingEvents {
 
             case inputControls.sKey.isDown:
                 player.frame = 18;
+                if (!player.isBlocking){
+                    player.isBlocking = true;
+                    player.isImmortal = true;
+                }
                 break;
 
             case inputControls.spaceKey.isDown:
@@ -95,6 +99,10 @@ class FightingEvents {
 
             case inputControls.downKey.isDown:
                 enemy.frame = 16;
+                if (!enemy.isBlocking){
+                    enemy.isBlocking = true;
+                    enemy.isImmortal = true;
+                }
                 break;
 
              case inputControls.fKey.isDown:
@@ -136,8 +144,7 @@ class FightingEvents {
             victim.healthBar.setPercent(victim.health);
             attacker.punchSound.play();
             if (victim.health < 1) {
-                this.game.physics.arcade.enable(victim.hitbox1);
-                //victim.hitbox1.kill();
+                victim.hitbox1.body.disable=true;
                 victim.kill();
             } else {
                 victim.isImmortal = true;
@@ -148,14 +155,14 @@ class FightingEvents {
         console.log(victim.health);
     }
 
-    knockback(attacker, victim){
+    knockback = (attacker, victim) =>{
         let timeout = setTimeout(() => {
             victim.isImmortal = false;
             victim.body.velocity.x = 0;
         },100);
         let startingX = victim.body.x;
         (attacker.body.x < victim.body.x) ? victim.body.velocity.x = 300 : victim.body.velocity.x = -300;
-        victim.frame = 19;
+        (victim === this.enemy) ? victim.frame = 19 : victim.frame = 8;
     }
 
     runAgainst(){

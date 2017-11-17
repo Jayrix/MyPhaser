@@ -37,13 +37,13 @@ class Enemy {
 
         //states
         enemy.health = 100;
-        enemy.healthBar = new HealthBar(game, {x : game.world.width - 250, y: 130, width: 400,
+        enemy.healthBar = new HealthBar(game, {x : game.world.width - 250, y: 100, width: 400, height:50,
             bg: {color: '#75000e'},
             bar: {color: '#00b832'},
             flipped : true,
         });
         enemy.isImmortal = false;
-        enemy.blocking = false;
+        enemy.isBlocking = false;
 
 
         return enemy;

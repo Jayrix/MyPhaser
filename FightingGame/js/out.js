@@ -337,6 +337,10 @@ window.addEventListener('load', function () {
                 }
                 _this.player.body.velocity.x = 0;
                 _this.player.hitbox1.kill();
+                if (_this.player.isBlocking) {
+                    _this.player.isImmortal = false;
+                    _this.player.isBlocking = false;
+                }
 
                 //do debugowania - bedzie wymagalo przerboienia przy dwoch graczach
                 if (_this.enemy.body.touching.down) {
@@ -347,6 +351,10 @@ window.addEventListener('load', function () {
                 }
                 _this.enemy.body.velocity.x = 0;
                 _this.enemy.hitbox1.kill();
+                if (_this.enemy.isBlocking) {
+                    _this.enemy.isImmortal = false;
+                    _this.enemy.isBlocking = false;
+                }
 
                 console.log(_this.enemy.body.x);
             };
@@ -387,18 +395,19 @@ window.addEventListener('load', function () {
         render: function render() {
 
             // Sprite debug info
-            game.debug.spriteInfo(this.player, 32, 32);
-            game.debug.spriteInfo(this.enemy, 500, 32);
-            game.debug.body(this.player);
-            game.debug.body(this.enemy);
-            game.debug.body(this.player.hitbox1);
-            game.debug.body(this.enemy.hitbox1);
+            // game.debug.spriteInfo(this.player,32,32);
+            // game.debug.spriteInfo(this.enemy, 500,32);
+            // game.debug.body(this.player);
+            // game.debug.body(this.enemy);
+            // game.debug.body(this.player.hitbox1);
+            // game.debug.body(this.enemy.hitbox1);
+
         }
 
     };
 
     // Initialize Phaser, and create a 400px by 490px game
-    var game = new Phaser.Game(1100, 524, Phaser.CANVAS);
+    var game = new Phaser.Game(1500, 524, Phaser.CANVAS);
 
     // Add the 'mainState' and call it 'main'
     game.state.add('main', mainState);
@@ -468,12 +477,13 @@ var Enemy = function () {
 
             //states
             enemy.health = 100;
-            enemy.healthBar = new _HealthBar2.default(game, { x: game.world.width - 250, y: 130, width: 400,
+            enemy.healthBar = new _HealthBar2.default(game, { x: game.world.width - 250, y: 100, width: 400, height: 50,
                 bg: { color: '#75000e' },
                 bar: { color: '#00b832' },
                 flipped: true
             });
             enemy.isImmortal = false;
+            enemy.isBlocking = false;
 
             return enemy;
         }
@@ -542,12 +552,13 @@ var Player = function () {
 
             //states
             player.health = 100;
-            player.healthBar = new _HealthBar2.default(game, { x: 250, y: 130, width: 400,
+            player.healthBar = new _HealthBar2.default(game, { x: 250, y: 100, width: 400, height: 50,
                 bg: { color: '#75000e' },
                 bar: { color: '#00b832' }
 
             });
             player.isImmortal = false;
+            player.isBlocking = false;
 
             return player;
         }
@@ -604,7 +615,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var FightingEvents = function () {
     function FightingEvents(player, enemy, inputControls, game) {
+        var _this = this;
+
         _classCallCheck(this, FightingEvents);
+
+        this.knockback = function (attacker, victim) {
+            var timeout = setTimeout(function () {
+                victim.isImmortal = false;
+                victim.body.velocity.x = 0;
+            }, 100);
+            var startingX = victim.body.x;
+            attacker.body.x < victim.body.x ? victim.body.velocity.x = 300 : victim.body.velocity.x = -300;
+            victim === _this.enemy ? victim.frame = 19 : victim.frame = 8;
+        };
 
         this.player = player;
         this.enemy = enemy;
@@ -655,6 +678,10 @@ var FightingEvents = function () {
 
                 case inputControls.sKey.isDown:
                     player.frame = 18;
+                    if (!player.isBlocking) {
+                        player.isBlocking = true;
+                        player.isImmortal = true;
+                    }
                     break;
 
                 case inputControls.spaceKey.isDown:
@@ -703,6 +730,10 @@ var FightingEvents = function () {
 
                 case inputControls.downKey.isDown:
                     enemy.frame = 16;
+                    if (!enemy.isBlocking) {
+                        enemy.isBlocking = true;
+                        enemy.isImmortal = true;
+                    }
                     break;
 
                 case inputControls.fKey.isDown:
@@ -747,8 +778,7 @@ var FightingEvents = function () {
                 victim.healthBar.setPercent(victim.health);
                 attacker.punchSound.play();
                 if (victim.health < 1) {
-                    this.game.physics.arcade.enable(victim.hitbox1);
-                    //victim.hitbox1.kill();
+                    victim.hitbox1.body.disable = true;
                     victim.kill();
                 } else {
                     victim.isImmortal = true;
@@ -756,17 +786,6 @@ var FightingEvents = function () {
                 }
             }
             console.log(victim.health);
-        }
-    }, {
-        key: 'knockback',
-        value: function knockback(attacker, victim) {
-            var timeout = setTimeout(function () {
-                victim.isImmortal = false;
-                victim.body.velocity.x = 0;
-            }, 100);
-            var startingX = victim.body.x;
-            attacker.body.x < victim.body.x ? victim.body.velocity.x = 300 : victim.body.velocity.x = -300;
-            victim.frame = 19;
         }
     }, {
         key: 'runAgainst',
