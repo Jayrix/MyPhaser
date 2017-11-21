@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff2fa460-8519-42d9-a513-9503ea8745ff" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/js/FightingEvents.js" afterPath="$PROJECT_DIR$/FightingGame/js/FightingEvents.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/js/app.js" afterPath="$PROJECT_DIR$/FightingGame/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FightingGame/js/out.js" afterPath="$PROJECT_DIR$/FightingGame/js/out.js" />
-    </list>
+    <list default="true" id="ff2fa460-8519-42d9-a513-9503ea8745ff" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -48,8 +43,8 @@
           <file leaf-file-name="FightingEvents.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/FightingGame/js/FightingEvents.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="452">
-                  <caret line="186" column="53" lean-forward="true" selection-start-line="186" selection-start-column="53" selection-end-line="186" selection-end-column="53" />
+                <state relative-caret-position="596">
+                  <caret line="206" column="5" lean-forward="true" selection-start-line="206" selection-start-column="5" selection-end-line="206" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -274,12 +269,12 @@
       <workItem from="1510908058683" duration="2801000" />
       <workItem from="1510915094828" duration="15532000" />
       <workItem from="1511196682744" duration="5128000" />
-      <workItem from="1511226972870" duration="1803000" />
+      <workItem from="1511226972870" duration="1914000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103916000" />
+    <option name="totallyTimeSpent" value="104027000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="298" y="174" width="1617" height="1062" extended-state="6" />
@@ -647,8 +642,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FightingGame/js/FightingEvents.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="186" column="53" lean-forward="true" selection-start-line="186" selection-start-column="53" selection-end-line="186" selection-end-column="53" />
+        <state relative-caret-position="596">
+          <caret line="206" column="5" lean-forward="true" selection-start-line="206" selection-start-column="5" selection-end-line="206" selection-end-column="5" />
           <folding />
         </state>
       </provider>
