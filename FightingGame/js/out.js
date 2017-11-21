@@ -343,18 +343,18 @@ window.addEventListener('load', function () {
                 }
 
                 //do debugowania - bedzie wymagalo przerboienia przy dwoch graczach
-                if (_this.enemy.body.touching.down) {
-                    _this.enemy.frame = 0;
-                    _this.enemy.animations.stop(_this.enemy.lastAnimation);
-                    _this.enemy.animations.play('idle');
-                    _this.enemy.lastAnimation = 'idle';
-                }
-                _this.enemy.body.velocity.x = 0;
-                _this.enemy.hitbox1.kill();
-                if (_this.enemy.isBlocking) {
-                    _this.enemy.isImmortal = false;
-                    _this.enemy.isBlocking = false;
-                }
+                // if (this.enemy.body.touching.down){
+                //     this.enemy.frame = 0;
+                //     this.enemy.animations.stop(this.enemy.lastAnimation);
+                //     this.enemy.animations.play('idle');
+                //     this.enemy.lastAnimation = 'idle';
+                // }
+                // this.enemy.body.velocity.x = 0;
+                // this.enemy.hitbox1.kill();
+                // if(this.enemy.isBlocking){
+                //     this.enemy.isImmortal = false;
+                //     this.enemy.isBlocking = false;
+                // }
 
                 console.log(_this.enemy.body.x);
             };
@@ -391,17 +391,18 @@ window.addEventListener('load', function () {
             if (this.keyboardIsBeingPressed) {
                 this.FightingEventsLibrary.playerMove(this.player, this.enemy, this.inputControls);
             }
+
+            this.FightingEventsLibrary.ai(this.player, this.enemy);
         },
         render: function render() {
 
             // Sprite debug info
-            // game.debug.spriteInfo(this.player,32,32);
-            // game.debug.spriteInfo(this.enemy, 500,32);
-            // game.debug.body(this.player);
-            // game.debug.body(this.enemy);
-            // game.debug.body(this.player.hitbox1);
-            // game.debug.body(this.enemy.hitbox1);
-
+            game.debug.spriteInfo(this.player, 32, 32);
+            game.debug.spriteInfo(this.enemy, 500, 32);
+            game.debug.body(this.player);
+            game.debug.body(this.enemy);
+            game.debug.body(this.player.hitbox1);
+            game.debug.body(this.enemy.hitbox1);
         }
 
     };
@@ -694,57 +695,57 @@ var FightingEvents = function () {
                     this.jump(player, -700);
                     break;
 
-                //ENEMY INPUTS
-                case inputControls.leftKey.isDown:
-                    if (enemy.body.touching.down) {
-                        enemy.animations.play('run');
-                        enemy.lastAnimation = 'run';
-                        if (inputControls.upKey.isDown) this.jump(enemy, -700);
-                    } else {
-                        enemy.frame = 8;
-                        enemy.preLastAnimation = 'jump';
-                    }
-                    if (enemy.scale.x > 0) {
-                        enemy.scale.x *= -1;
-                        enemy.hitbox1.body.setSize(22, 50, -61, enemy.height / 3);
-                    }
-                    enemy.body.velocity.x = -250;
-
-                    break;
-
-                case inputControls.rightKey.isDown:
-                    if (enemy.body.touching.down) {
-                        enemy.animations.play('run');
-                        enemy.lastAnimation = 'run';
-                        if (inputControls.upKey.isDown) this.jump(enemy, -700);
-                    } else {
-                        enemy.frame = 8;
-                        enemy.preLastAnimation = 'jump';
-                    }
-                    if (enemy.scale.x < 0) {
-                        enemy.scale.x *= -1;
-                        enemy.hitbox1.body.setSize(22, 50, 39, enemy.height / 3);
-                    }
-                    enemy.body.velocity.x = 250;
-                    break;
-
-                case inputControls.downKey.isDown:
-                    enemy.frame = 16;
-                    if (!enemy.isBlocking) {
-                        enemy.isBlocking = true;
-                        enemy.isImmortal = true;
-                    }
-                    break;
-
-                case inputControls.fKey.isDown:
-                    enemy.animations.play('attack');
-                    enemy.lastAnimation = 'attack';
-                    this.attack(enemy);
-                    break;
-
-                case inputControls.upKey.isDown:
-                    this.jump(enemy, -700);
-                    break;
+                //ENEMY INPUTS///////////////////////////////////////
+                // case inputControls.leftKey.isDown:
+                //     if (enemy.body.touching.down) {
+                //         enemy.animations.play('run');
+                //         enemy.lastAnimation = 'run';
+                //         if(inputControls.upKey.isDown) this.jump(enemy,-700);
+                //      } else{
+                //          enemy.frame = 8;
+                //          enemy.preLastAnimation = 'jump';
+                //      }
+                //      if (enemy.scale.x > 0) {
+                //          enemy.scale.x *= -1;
+                //          enemy.hitbox1.body.setSize(22, 50, -61,enemy.height / 3);
+                //      }
+                //     enemy.body.velocity.x = -250;
+                //
+                //     break;
+                //
+                // case inputControls.rightKey.isDown:
+                //     if (enemy.body.touching.down){
+                //         enemy.animations.play('run');
+                //         enemy.lastAnimation = 'run';
+                //         if(inputControls.upKey.isDown) this.jump(enemy,-700);
+                //     } else {
+                //         enemy.frame = 8;
+                //         enemy.preLastAnimation = 'jump';
+                //     }
+                //      if (enemy.scale.x < 0){
+                //          enemy.scale.x *= -1;
+                //          enemy.hitbox1.body.setSize(22, 50, 39,enemy.height / 3);
+                //      }
+                //     enemy.body.velocity.x = 250;
+                //     break;
+                //
+                // case inputControls.downKey.isDown:
+                //     enemy.frame = 16;
+                //     if (!enemy.isBlocking){
+                //         enemy.isBlocking = true;
+                //         enemy.isImmortal = true;
+                //     }
+                //     break;
+                //
+                //  case inputControls.fKey.isDown:
+                //      enemy.animations.play('attack');
+                //      enemy.lastAnimation = 'attack';
+                //      this.attack(enemy);
+                //      break;
+                //
+                //  case inputControls.upKey.isDown:
+                //      this.jump(enemy,-700);
+                //      break;
 
             }
         }
@@ -799,6 +800,35 @@ var FightingEvents = function () {
             if (actor.lastAnimation === 'jump') {
                 actor.animations.play('idle');
                 actor.lastAnimation = 'idle';
+            }
+        }
+    }, {
+        key: 'ai',
+        value: function ai(player, enemy) {
+            if (player.body.touching.down) {
+                if (Math.abs(player.body.x - enemy.body.x) < enemy.body.width) {
+                    enemy.body.velocity.x = 0;
+                    enemy.animations.play('idle');
+                    enemy.lastAnimation = 'idle';
+                } else if (player.body.x < enemy.body.x) {
+                    enemy.body.velocity.x = -200;
+                    if (enemy.scale.x > 0) {
+                        enemy.scale.x *= -1;
+                        // enemy.hitbox1.body.setSize(22, 50, -61,enemy.height / 3);
+                    }
+                } else {
+                    enemy.body.velocity.x = 200;
+                    if (enemy.scale.x < 0) {
+                        enemy.scale.x *= -1;
+                        //enemy.hitbox1.body.setSize(22, 50, 39,enemy.height / 3);
+                    }
+                }
+                enemy.animations.play('run');
+                enemy.lastAnimation = 'run';
+            } else {
+                enemy.body.velocity.x = 0;
+                enemy.animations.play('idle');
+                enemy.lastAnimation = 'idle';
             }
         }
     }]);

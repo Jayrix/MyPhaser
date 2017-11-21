@@ -75,18 +75,18 @@ var mainState = {
             }
 
             //do debugowania - bedzie wymagalo przerboienia przy dwoch graczach
-            if (this.enemy.body.touching.down){
-                this.enemy.frame = 0;
-                this.enemy.animations.stop(this.enemy.lastAnimation);
-                this.enemy.animations.play('idle');
-                this.enemy.lastAnimation = 'idle';
-            }
-            this.enemy.body.velocity.x = 0;
-            this.enemy.hitbox1.kill();
-            if(this.enemy.isBlocking){
-                this.enemy.isImmortal = false;
-                this.enemy.isBlocking = false;
-            }
+            // if (this.enemy.body.touching.down){
+            //     this.enemy.frame = 0;
+            //     this.enemy.animations.stop(this.enemy.lastAnimation);
+            //     this.enemy.animations.play('idle');
+            //     this.enemy.lastAnimation = 'idle';
+            // }
+            // this.enemy.body.velocity.x = 0;
+            // this.enemy.hitbox1.kill();
+            // if(this.enemy.isBlocking){
+            //     this.enemy.isImmortal = false;
+            //     this.enemy.isBlocking = false;
+            // }
 
             console.log(this.enemy.body.x);
 
@@ -118,16 +118,18 @@ var mainState = {
         if (this.keyboardIsBeingPressed) {
             this.FightingEventsLibrary.playerMove(this.player, this.enemy, this.inputControls);
         }
+
+        this.FightingEventsLibrary.ai(this.player, this.enemy);
     },
     render: function() {
 
         // Sprite debug info
-        // game.debug.spriteInfo(this.player,32,32);
-        // game.debug.spriteInfo(this.enemy, 500,32);
-        // game.debug.body(this.player);
-        // game.debug.body(this.enemy);
-        // game.debug.body(this.player.hitbox1);
-        // game.debug.body(this.enemy.hitbox1);
+        game.debug.spriteInfo(this.player,32,32);
+        game.debug.spriteInfo(this.enemy, 500,32);
+        game.debug.body(this.player);
+        game.debug.body(this.enemy);
+        game.debug.body(this.player.hitbox1);
+        game.debug.body(this.enemy.hitbox1);
 
     },
 
